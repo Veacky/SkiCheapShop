@@ -17,6 +17,7 @@
 <?php echo $data->description; ?>
 </p>
 
+<div class="buttons">
 <p>
   <?php
   if(isset($_SESSION["user"]) && $_SESSION["user"]->idpeople == $data->seller->idpeople){
@@ -27,3 +28,4 @@
   ?>
 </p>
 <?php } ?>
+</div>

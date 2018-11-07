@@ -32,6 +32,10 @@ class PeopleController extends Controller {
 		$this->render("signup");
 	}
 
+	public function edit(){
+		$this->render("editing");
+	}
+
 	public function confirm(){
 		if($_POST["action"]=="Register"){
 			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"]){
