@@ -92,4 +92,19 @@ class ItemController extends Controller {
 		$this->render("index", Item::findAll());
 	}
 
+
+public function upload_p(){
+if ($_POST["action"]=="Add") {
+	$image = $_FILES['image']['name'];
+	$target = "images/".basename($image);
+	$sql = "INSERT INTO item (image) VALUES ('$image')";
+	mysqli_query($db, $sql);
+
+	if (move_uploaded_file($_FILES['image'], $target)) {
+		$msg = "Image uploaded successfully";
+	}else{
+		$msg = "Failed to upload image";
+	}
+}
+}
 }

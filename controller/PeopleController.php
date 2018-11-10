@@ -32,7 +32,7 @@ class PeopleController extends Controller {
 		$this->render("signup");
 	}
 
-	public function edit(){
+	public function editing(){
 		$this->render("editing");
 	}
 
@@ -86,4 +86,18 @@ class PeopleController extends Controller {
 		}
 	}
 
+public function change_p(){
+	if($_POST["action"]=="change"){
+	 if ($_POST["password_1"] == $_POST["password_2"] && ((strlen ($_POST["password_1"])<50) | strlen ($_POST["password_1"])>3)) echo "Password was changed";
+	 if (isset($_SESSION["user"])) mysql_query ("update people set pass = '".$_POST["password_1"]."' where id=".$_SESSION["user"].";", $link);
+	 else
+	 {
+		 // kontolou jsme prošli
+		 // poděkujeme uživateli
+		 echo "Password dont match";
+		 // uložíme změny do databáze
+	 }
+ }
+
+}
 }

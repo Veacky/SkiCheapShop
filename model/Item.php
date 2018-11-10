@@ -12,6 +12,7 @@ class Item extends Model {
 	protected $_avaibility;
 	protected $_seller;
 	protected $_buyer;
+	protected $_image;
 
 	public static function findAll() {
 		$class = get_called_class();
