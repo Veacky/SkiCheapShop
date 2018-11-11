@@ -1,7 +1,19 @@
+
 <h2><?php if(isset($data["title"])) { echo $data["title"]; } else { echo "All items";} ?></h2>
+<table class="table">
+	<div class="aboutitem">
+  <thead>
+    <tr class="bg-danger">
+      <th scope="col">Brand and model</th>
+      <th scope="col">Category</th>
+      <th scope="col">Condition</th>
+			<th scope="col">Price</th>
+    </tr>
+  </thead>
+</div>
+<tbody>
 
 <?php
-echo "<table>";
 foreach($data as $item){
 	if(is_object($item)){
 		echo "<tr>";
@@ -12,4 +24,6 @@ foreach($data as $item){
 		echo "</tr>";
 	}
 }
-echo "</table>";
+?>
+</tbody>
+</table>
