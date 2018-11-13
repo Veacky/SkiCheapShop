@@ -1,9 +1,5 @@
 <?php
-// Classe métier générique à accès BD automatique
-// ToDo : non duplication des instances de classes liées
-// ToDo : modèle hiérarchique
 class Model {
-	// Un appel au constructeur sans id créées une instance et une ligne dans la db
 	public function __construct($id=null) {
 		$class = get_class($this);
 		$table = strtolower($class);
@@ -37,6 +33,7 @@ class Model {
 	}
 
 	public static function findAll() {
+		/// This function find all objets of a given class
 		$class = get_called_class();
 		$table = strtolower($class);
 		$st = db()->prepare("select id$table from $table");
@@ -49,6 +46,7 @@ class Model {
 	}
 
 	public static function findByID($id) {
+		/// This function gives all information about a given object (with his ID)
 		$class = get_called_class();
 		$table = strtolower($class);
 		$st = db()->prepare("select id$table from $table where id$table = '$id'");
@@ -61,6 +59,7 @@ class Model {
 	}
 
 	public function __get($fieldName) {
+		/// Get an object attribute
 		$varName = "_".$fieldName;
 		if (property_exists(get_class($this), $varName))
 			return $this->$varName;
@@ -69,6 +68,7 @@ class Model {
 	}
 
 	public function __set($fieldName, $value) {
+		/// Set an object attribute
 		$varName = "_".$fieldName;
 		if ($value != null) {
 			if (property_exists(get_class($this), $varName)) {
@@ -93,6 +93,7 @@ class Model {
 	}
 
 	public function deleteWithID() {
+		/// Delete a given object (with his id) from the DB
 		$class = get_class($this);
 		$table = strtolower($class);
 		$idTemp = "id".$table;
@@ -100,9 +101,5 @@ class Model {
 		$query = "delete from $table where id$table=".$id;
 		db()->exec($query);
 	}
-
-	// à surcharger
-	public function __toString() {
-		return get_class($this).": ".$this->name;
-	}
+	
 }

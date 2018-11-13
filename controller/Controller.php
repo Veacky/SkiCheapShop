@@ -9,6 +9,7 @@ class Controller {
 	}
 
 	public function render($view, $d=null) {
+		/// Sending the user to the View file called in parameter
 		global $data;
 		include_once "view/header.php";
 
@@ -21,4 +22,3 @@ class Controller {
 	}
 
 }
-

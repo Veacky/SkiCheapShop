@@ -7,7 +7,8 @@
     <div class="col-sm-3">
 			<?php
 			foreach($data as $category) {
-				echo "<p>";
+				echo "<p class='category'>";
+        echo "<img scr='images/categories/".$category->name.".jpg'>";
 				echo "<a href='?r=category/view&id=".$category->idcategory."'>".$category->name."</a>";
 				echo "</p>";
 			}

@@ -11,11 +11,7 @@
 	<label name="password_2">Comfirm Password :</label>
 	<input type="password" name="password_2" class= "form-control"/>
 </div>
-<<<<<<< HEAD
 	<button type="submit" name ="action" value="change" class = "btn btn-primary btn-block">Change information</button>
-=======
-	<button type="submit" name ="action" value="change" class = "btn btn-primary btn-block">Change imformation</button>
->>>>>>> f710e4d020aad0baeedd3ed98a107b51f4783be4
 </form>
 </div>
 </div>

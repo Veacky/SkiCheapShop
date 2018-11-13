@@ -4,10 +4,14 @@ class PeopleController extends Controller {
 
 
 	public function index() {
+		/// Function going on when Index view is displayed
+		/// Displaying all users
 		$this->render("index", People::findAll());
 	}
 
 	public function view() {
+		/// Function going on when View view is displayed
+		/// Displaying every items selling by this user (getting the id)
 			$list = People::findItems($_GET["id"]);
 			if(!empty($list)){
 				$list["title"] = "Items selling by ".$list[0]->seller->name;
@@ -20,24 +24,34 @@ class PeopleController extends Controller {
 	}
 
 	public function login(){
+		/// Function called when the login view is wanted
+		/// Send the user to this view
 		$this->render("login");
 	}
 
 	public function logout(){
+		/// Function called when the user clicks on "logout"
+		/// Disconnet the connected user
 		unset($_SESSION["user"]);
 		(new SiteController())->render("index");
 	}
 
 	public function signup(){
+		/// Function called when the Register view is wanted
+		/// Send the user to this view
 		$this->render("signup");
 	}
 
 	public function editing(){
+		/// Function called when the Editing view is wanted
+		/// Send the user to this view
 		$this->render("editing");
 	}
 
 	public function confirm(){
-		if($_POST["action"]=="Register"){
+		/// Function called when any form concerned People is submited
+		/// Takes care of checking the form values, managing objects and sending information to the DB
+		if($_POST["action"]=="Register"){ //When a Register form is submited
 			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"]){
 				$userTest = People::findByEmail(trim(strtolower($_POST["email1"])));
 				if($userTest == "no result"){
@@ -63,7 +77,7 @@ class PeopleController extends Controller {
 				$this->render("signup");
 			}
 		}
-		else if($_POST["action"]=="Login"){
+		else if($_POST["action"]=="Login"){ //When a Login form is submited
 			$user = People::findByEmail(trim($_POST["email"]));
 			if($user != "no result"){
 				if($user->pass == $_POST["password"]){
@@ -80,7 +94,7 @@ class PeopleController extends Controller {
 				$this->render("login");
 			}
 		}
-		if($_POST["action"]=="change"){
+		if($_POST["action"]=="change"){ //When a Editing form is submited
 			if ($_POST["password_1"] == $_POST["password_2"] && ((strlen ($_POST["password_1"])<50))) {
 
 				$user = People::findByEmail(trim($_SESSION["user"]->email));

@@ -16,6 +16,7 @@ class Item extends Model {
 	protected $_image;
 
 	public static function findAll() {
+		/// This Function is giving all items stored in the DB
 		$class = get_called_class();
 		$table = strtolower($class);
 		$st = db()->prepare("select id$table from $table");
@@ -34,6 +35,7 @@ class Item extends Model {
 	}
 
 	public static function findByID($id) {
+		/// This function is giving all infomation about a wanted item (with his id)
 		$class = get_called_class();
 		$table = strtolower($class);
 		$st = db()->prepare("select iditem from item where iditem = '$id'");
