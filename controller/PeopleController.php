@@ -80,21 +80,22 @@ class PeopleController extends Controller {
 				$this->render("login");
 			}
 		}
+		if($_POST["action"]=="change"){
+			if ($_POST["password_1"] == $_POST["password_2"] && ((strlen ($_POST["password_1"])<50))) {
+
+				$user = People::findByEmail(trim($_SESSION["user"]->email));
+				$user->__set("pass", $_POST["password_1"]);
+
+				$query = "update people set pass = '".$_POST["password_1"]."' where idpeople=".$_SESSION["user"]->idpeople.";";
+				db()->exec($query);
+
+				$_POST["info"] = "Information changed with succes !";
+				(new PeopleController())->render("editing");
+			}
+		}
 		else{
 			$_POST["error"]="Something wrong happened, try again.";
 			(new SiteController())->render("index");
 		}
 	}
-
-public function change_p(){
-	if($_POST["action"]=="change"){
-	 if ($_POST["password_1"] == $_POST["password_2"] && ((strlen ($_POST["password_1"])<50) | strlen ($_POST["password_1"])>3)) echo "Password was changed";
-	 if (isset($_SESSION["user"])) mysql_query ("update people set pass = '".$_POST["password_1"]."' where id=".$_SESSION["user"].";", $link);
-	 else
-	 {
-		 echo "Password dont match";
-	 }
- }
-
-}
 }

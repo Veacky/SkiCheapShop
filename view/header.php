@@ -14,7 +14,7 @@
 		<div class="login">
 		<?php
 		if(isset($_SESSION["user"])){
-			//echo "<a href='?r=people/editing'>Edit profile</a>";
+			echo "<a href='?r=people/editing'>Edit profile</a>";
 			echo "<a href='?r=people/logout'>Log out</a>";
 			echo $_SESSION["user"];
 		}
