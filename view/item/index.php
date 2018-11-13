@@ -1,4 +1,4 @@
-
+<div class="container">
 <h2><?php if(isset($data["title"])) { echo $data["title"]; } else { echo "All items";} ?></h2>
 <table class="table">
 	<div class="aboutitem">
@@ -27,3 +27,4 @@ foreach($data as $item){
 ?>
 </tbody>
 </table>
+</div>
