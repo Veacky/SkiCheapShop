@@ -51,14 +51,24 @@ class ItemController extends Controller {
 			$item->__set("description", $_POST["description"]);
 			$item->__set("price", $_POST["price"]);
 			$item->__set("seller", $_SESSION["user"]->idpeople);
-			$query = "insert into item (brand, model, category, state, description, price, seller) values('".$_POST["brand"]."',
+			$image = $_FILES['image']['name'];
+			$target = "images/".basename($image);
+			$sql = "INSERT INTO item (image) VALUES ('$image')";
+			mysqli_query($db, $sql);
+			if (move_uploaded_file($_FILES['image'], $target)) {}
+			else{
+				$_POST["error"] = "Failed to upload image";
+			}
+			$query = "insert into item (brand, model, category, state, description, price, seller, image) values('".$_POST["brand"]."',
 																																														'".$_POST["model"]."',
 																																														".$_POST["category"].",
 																																														'".$_POST["state"]."',
 																																														'".$_POST["description"]."',
 																																														".$_POST["price"].",
-																																														".$_SESSION["user"]->idpeople."
+																																														".$_SESSION["user"]->idpeople.",
+																																														'".$_POST["image"]."'
 																																														)";
+																																													var_dump($query);
 			db()->exec($query);
 			$_POST["info"] = "Item added with succes !";
 			$this->render("index", Item::findAll());
@@ -93,18 +103,18 @@ class ItemController extends Controller {
 	}
 
 
-public function upload_p(){
-if ($_POST["action"]=="Add") {
-	$image = $_FILES['image']['name'];
-	$target = "images/".basename($image);
-	$sql = "INSERT INTO item (image) VALUES ('$image')";
-	mysqli_query($db, $sql);
-
-	if (move_uploaded_file($_FILES['image'], $target)) {
-		$msg = "Image uploaded successfully";
-	}else{
-		$msg = "Failed to upload image";
+	public function upload_p(){
+		if ($_POST["action"]=="Add") {
+			$image = $_FILES['image']['name'];
+			$target = "images/".basename($image);
+			$sql = "INSERT INTO item (image) VALUES ('$image')";
+			mysqli_query($db, $sql);
+			if (move_uploaded_file($_FILES['image'], $target)) {
+				$msg = "Image uploaded successfully";
+			}else{
+				$msg = "Failed to upload image";
+			}
+		}
 	}
-}
-}
+
 }

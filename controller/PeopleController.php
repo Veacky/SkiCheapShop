@@ -92,10 +92,7 @@ public function change_p(){
 	 if (isset($_SESSION["user"])) mysql_query ("update people set pass = '".$_POST["password_1"]."' where id=".$_SESSION["user"].";", $link);
 	 else
 	 {
-		 // kontolou jsme prošli
-		 // poděkujeme uživateli
 		 echo "Password dont match";
-		 // uložíme změny do databáze
 	 }
  }
 

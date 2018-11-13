@@ -3,7 +3,7 @@
 <div class = "container">
 	<div class ="login-form col-md-4 offset md-4" >
 	<h2>Add an item</h2>
-		<form method="post" action="?r=item/confirm" enctype="multipart/form-data">
+		<form method="post" action="?r=item/confirm">  <!-- enctype="multipart/form-data"> -->
 			<div class = "form-group">
 				<label name="brand">Brand :</label>
 				<input type="text" name="brand"  class= "form-control"/>
@@ -41,11 +41,11 @@
 				€<input type="number" name="price" class="form-control"/>
 			</div>
 			<div class="form-group">
-			  <input type="hidden" name="size" value="1000000" class="form-control"/>
+			  <input type="hidden" name="size" value="" class="form-control"/>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<input type="file" name="image" class="form-control"/>
-			</div>
+			</div> -->
 			<button type="submit" name="action" value="Add" class="btn btn-primary btn-block"> Add </button>
 		</form>
 	</div>
