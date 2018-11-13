@@ -101,5 +101,9 @@ class Model {
 		$query = "delete from $table where id$table=".$id;
 		db()->exec($query);
 	}
-	
+
+	public function __toString() {
+		return get_class($this).": ".$this->name;
+}
+
 }
