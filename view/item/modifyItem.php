@@ -47,7 +47,7 @@
  <label name="price">Price :</label>
 	€<input type="number" name="price" value="<?php echo $data->price ?>"/ class= "form-control">
 </div>
-<button type="submit" name ="action" value="Modify" class = "btn btn-primary btn-block"> Modify</button>
+<button type="submit" name ="action" value="Modify" class = "btn btn-primary btn-block">Modify</button>
 </form>
 </div>
 </div>
