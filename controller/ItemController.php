@@ -53,35 +53,39 @@ class ItemController extends Controller {
 		/// Function called when any form concerned Item is submited
 		/// Takes care of checking the form values, managing objects and sending information to the DB
 		if($_POST["action"]=="Add"){ // When an adding form is submited
-			$item = new Item();
-			$item->__set("category", new Category($_POST["category"]));
-			$item->__set("brand", $_POST["brand"]);
-			$item->__set("model", $_POST["model"]);
-			$item->__set("state", $_POST["state"]);
-			$item->__set("description", $_POST["description"]);
-			$item->__set("price", $_POST["price"]);
-			$item->__set("seller", $_SESSION["user"]->idpeople);
-			//$image = $_FILES['image']['name'];
-			//$target = "images/".basename($image);
-			//$sql = "INSERT INTO item (image) VALUES ('$image')";
-			//mysqli_query($db, $sql);
-			//if (move_uploaded_file($_FILES['image'], $target)) {}
-			//else{
-			//	$_POST["error"] = "Failed to upload image";
-			//}
-			$query = "insert into item (brand, model, category, state, description, price, seller, image) values('".$_POST["brand"]."',
-																																														'".$_POST["model"]."',
-																																														".$_POST["category"].",
-																																														'".$_POST["state"]."',
-																																														'".$_POST["description"]."',
-																																														".$_POST["price"].",
-																																														".$_SESSION["user"]->idpeople.",
-																																														'".$_POST["image"]."'
-																																														)";
-																																													var_dump($query);
-			db()->exec($query);
-			$_POST["info"] = "Item added with succes !";
-			$this->render("index", Item::findAll());
+			if(strlen($_POST["description"]) > 2000){
+				$item = new Item();
+				$item->__set("category", new Category($_POST["category"]));
+				$item->__set("brand", $_POST["brand"]);
+				$item->__set("model", $_POST["model"]);
+				$item->__set("state", $_POST["state"]);
+				$item->__set("description", $_POST["description"]);
+				$item->__set("price", $_POST["price"]);
+				$item->__set("seller", $_SESSION["user"]->idpeople);
+				//$image = $_FILES['image']['name'];
+				//$target = "images/".basename($image);
+				//$sql = "INSERT INTO item (image) VALUES ('$image')";
+				//mysqli_query($db, $sql);
+				//if (move_uploaded_file($_FILES['image'], $target)) {}
+				//else{
+				//	$_POST["error"] = "Failed to upload image";
+				//}
+				$query = "insert into item (brand, model, category, state, description, price, seller, image) values('".$_POST["brand"]."',
+																																															'".$_POST["model"]."',
+																																															".$_POST["category"].",
+																																															'".$_POST["state"]."',
+																																															'".$_POST["description"]."',
+																																															".$_POST["price"].",
+																																															".$_SESSION["user"]->idpeople.",
+																																															'".$_POST["image"]."'
+																																															)";
+																																														var_dump($query);
+				db()->exec($query);
+				$_POST["info"] = "Item added with succes !";
+				$this->render("index", Item::findAll());
+			}
+			$_POST["error"] = "Description is too long, please try again.";
+			$this->render("addItem", $item);
 		}
 		else if($_POST["action"]=="Modify"){ //When a modify form is submited
 			$item->__set("category", new Category($_POST["category"]));

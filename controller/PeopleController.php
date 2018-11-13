@@ -52,7 +52,7 @@ class PeopleController extends Controller {
 		/// Function called when any form concerned People is submited
 		/// Takes care of checking the form values, managing objects and sending information to the DB
 		if($_POST["action"]=="Register"){ //When a Register form is submited
-			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"]){
+			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"] && strlen($_POST["password_1"]) < 50){
 				$userTest = People::findByEmail(trim(strtolower($_POST["email1"])));
 				if($userTest == "no result"){
 					$people = new People();
@@ -73,7 +73,7 @@ class PeopleController extends Controller {
 				}
 			}
 			else{
-				$_POST["error"] = "Email addresses or passwords are not identic, try again.";
+				$_POST["error"] = "Email addresses or passwords are not identic, try again. (Maybe you password is too long.)";
 				$this->render("signup");
 			}
 		}
@@ -95,7 +95,7 @@ class PeopleController extends Controller {
 			}
 		}
 		if($_POST["action"]=="change"){ //When a Editing form is submited
-			if ($_POST["password_1"] == $_POST["password_2"] && ((strlen ($_POST["password_1"])<50))) {
+			if ($_POST["password_1"] == $_POST["password_2"] && strlen($_POST["password_1"]) < 50) {
 
 				$user = People::findByEmail(trim($_SESSION["user"]->email));
 				$user->__set("pass", $_POST["password_1"]);
