@@ -1,21 +1,19 @@
 <?php if(is_object($data)){?>
-<h2><?php echo $data->brand; ?> - <?php echo $data->model; ?></h2>
-<p>
-  Category : <a href='<?php echo "?r=category/view&id=".$data->category->idcategory ?>'><?php echo $data->category->name; ?></a>
+<h2 class="page-title"><?php echo $data->brand; ?> - <?php echo $data->model; ?></h2>
+<div class="row">
+  <div class="col-3">Category : <a href='<?php echo "?r=category/view&id=".$data->category->idcategory ?>'><?php echo $data->category->name; ?></a></div>
+  <div class="col-3">Seller : <a href='<?php echo "?r=people/view&id=".$data->seller->idpeople ?>'><?php echo $data->seller->name; ?></a></div>
+</div>
+<div class="row">
+  <div class="col-3">Condition : <?php echo $data->state; ?></div>
+  <div class="col-3">  Price : <span class="price"><?php echo $data->price; ?>€</span></div>
+</div>
 </p>
-<p>
-  Condition : <?php echo $data->state; ?>
-</p>
-<p>
-  Price : <?php echo $data->price; ?>€
-</p>
-</p>
-<p>
-  Seller : <a href='<?php echo "?r=people/view&id=".$data->seller->idpeople ?>'><?php echo $data->seller->name; ?></a>
-</p>
-<p>
-<?php echo $data->description; ?>
-</p>
+<div class="row">
+  <div class="col-12"><p>
+    <?php echo $data->description; ?>
+  </p></div>
+</div>
 
 <div class="buttons">
 <p>

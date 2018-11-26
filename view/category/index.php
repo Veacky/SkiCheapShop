@@ -1,13 +1,11 @@
-  <h2>List of categories</h2>
-  <div class="row">
-    <div class="col-sm-3">
+  <h2 class="page-title">List of categories</h2>
+  <div class="row categories">
 			<?php
 			foreach($data as $category) {
-				echo "<p class='category'>";
-        echo "<img scr='images/categories/".$category->name.".jpg'>";
-				echo "<a href='?r=category/view&id=".$category->idcategory."'>".$category->name."</a>";
-				echo "</p>";
+        echo "<a href='?r=category/view&id=".$category->idcategory."'><div class='category'>";
+        echo "<div class='image'><img src='images/categories/".$category->name.".jpg'></div>";
+				echo "<h3>".ucfirst($category->name)."</h3>";
+				echo "</div></a>";
 			}
 			?>
-    </div>
 	</div>
