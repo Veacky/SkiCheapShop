@@ -1,5 +1,4 @@
 
-<div class = "container">
 <div class ="login-form col-md-4 offset md-4">
 	<h2>Change information</h2>
 <form method="post" action="?r=people/confirm">
@@ -13,5 +12,4 @@
 </div>
 	<button type="submit" name ="action" value="change" class = "btn btn-primary btn-block">Change information</button>
 </form>
-</div>
 </div>

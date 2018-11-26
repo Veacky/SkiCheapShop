@@ -1,7 +1,6 @@
 <?php if(isset($_SESSION["user"]) && $_SESSION["user"]->idpeople == $data->seller->idpeople ){ ?>
 <h2>Modify an item</h2>
 
-<div class = "container">
 <div class ="login-form col-md-4 offset md-4">
 <form method="post" action="?r=item/confirm&id=<?php echo $_GET["id"] ?>">
 <div class = "form-group">
@@ -49,7 +48,6 @@
 </div>
 <button type="submit" name ="action" value="Modify" class = "btn btn-primary btn-block">Modify</button>
 </form>
-</div>
 </div>
 
 <?php
