@@ -12,23 +12,6 @@ button:hover, .button:hover, .btn:hover, .btn-primary:hover{
 	margin: auto;
 }
 
-body, main{
-	min-height: 100vh;
-}
-footer{
-	position: static;
-	bottom: 0px;
-	width: 100%;
-	color: white;
-}
-
-footer a{
-	color: rgba(255,255,255,.8);
-}
-footer a:hover{
-	color: rgba(255,255,255,1);
-}
-
 a{
 	color: #dc3545;
 	text-decoration: none;
@@ -38,12 +21,9 @@ a:hover{
 	text-decoration: none;
 }
 
-table, thead, tr, th{
-	border-top: white !important;
-}
-
 .page-title{
 	margin-top: 30px;
+	margin-bottom: 20px;
 }
 
 /* JUMBOTRON */
@@ -76,6 +56,25 @@ table, thead, tr, th{
 		color: rgba(255,255,255,1);
 }
 
+/* FOOTER */
+body, main{
+	min-height: 100vh;
+}
+footer{
+	margin-top: 30px;
+	position: static;
+	bottom: 0px;
+	width: 100%;
+	color: white;
+}
+
+footer a{
+	color: rgba(255,255,255,.8);
+}
+footer a:hover{
+	color: rgba(255,255,255,1);
+}
+
 /* INFO AND ERROR MESSAGES */
 .alert{
 	margin: 20px 0px 20px 0px;
@@ -93,13 +92,8 @@ table, thead, tr, th{
 }
 
 /* LIST PAGE */
-.items{
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
-.items h2{
-	margin-bottom: 20px;
+table, thead, tr, th{
+	border-top: white !important;
 }
 
 /* CAtEGORIES PAGE */

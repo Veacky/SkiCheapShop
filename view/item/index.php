@@ -1,5 +1,5 @@
 <div class="items">
-	<h2><?php if(isset($data["title"])) { echo $data["title"]; } else { echo "All items";} ?></h2>
+	<h2 class="page-title"><?php if(isset($data["title"])) { echo $data["title"]; } else { echo "All items";} ?></h2>
 	<table class="table">
 	  <thead>
 	    <tr class="col-names">
