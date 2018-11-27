@@ -16,7 +16,7 @@
 				echo "<tr class='table-row item'>";
 				echo "<td class='table-cel'><a href='?r=item/view&id=".$item->iditem."'>".$item->brand." - ".$item->model."</a></td>";
 				echo "<td class='table-cel'><a href='?r=category/view&id=".$item->category->idcategory."'>".$item->category->name."</a></td>";
-				echo "<td class='table-cel'>".$item->state."</td>";
+				echo "<td class='table-cel'>".ucfirst($item->state)."</td>";
 				echo "<td class='table-cel'>€".$item->price."</td>";
 				echo "</tr>";
 			}
