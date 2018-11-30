@@ -64,7 +64,7 @@ class ItemController extends Controller {
 				//$item->__set("price", $_POST["imagepath"]);
 				//$item->__set("price", $_POST["image"]);
 				$item->__set("seller", $_SESSION["user"]->idpeople);
-				$query = "insert into item (brand, model, category, state, description, price, seller, image) values('".$_POST["brand"]."','".$_POST["model"]."',".$_POST["category"].",'".$_POST["state"]."','".$_POST["description"]."',".$_POST["price"].",".$_SESSION["user"]->idpeople.",'TempPath')";
+				$query = "insert into item (brand, model, category, state, description, price, seller, image, imagepath) values('".$_POST["brand"]."','".$_POST["model"]."',".$_POST["category"].",'".$_POST["state"]."','".$_POST["description"]."',".$_POST["price"].",".$_SESSION["user"]->idpeople.",'TempImage', 'TempPath')";
 				db()->exec($query);
 				$_POST["info"] = "Item added with succes !";
 				$this->render("index", Item::findAll());

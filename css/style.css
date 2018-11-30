@@ -22,7 +22,6 @@ a:hover{
 }
 
 .page-title{
-	margin-top: 30px;
 	margin-bottom: 20px;
 }
 
@@ -62,6 +61,10 @@ a:hover{
 }
 .nav-link:hover{
 	color: rgba(255,255,255,1) !important;
+}
+
+.top-site{
+	margin-bottom: 30px;
 }
 
 /* FOOTER */

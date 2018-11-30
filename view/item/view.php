@@ -28,7 +28,13 @@
 
   </div>
   <div class="col-md-6 item-image">
-    <img src="https://via.placeholder.com/500"/>
+    <?php
+    if($data->imagepath == "TempPath" || $data->image == "TempImage" || !isset($data->imagepath) || !isset($data->image)){
+      echo "<img src='https://via.placeholder.com/500'/>";
+    } else{
+      echo "<img src='".$data->imagepath."'/>";
+    }
+    ?>
   </div>
 </div>
 <?php } ?>
