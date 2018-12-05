@@ -54,7 +54,6 @@ class ItemController extends Controller {
 		/// Takes care of checking the form values, managing objects and sending information to the DB
 		if($_POST["action"]=="Add"){ // When an adding form is submited
 			if(strlen($_POST["description"]) < 2000 && isset($_POST["state"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_POST["model"]) && isset($_POST["brand"]) && isset($_POST["category"])){
-var_dump($_POST);
 				$item = new Item();
 				$item->__set("category", new Category($_POST["category"]));
 				$item->__set("brand", $_POST["brand"]);
