@@ -25,7 +25,7 @@
 			<input type="password" name="password2" class= "form-control"/>
 		</div>
 	</div>
-	<button type="submit" name ="action" value="Register" class = "btn btn-primary btn-block"> Sing up </button>
+	<button type="submit" name ="action" value="Register" class = "btn btn-primary btn-block col-3 col-centered"> Sing up </button>
 	<span>Already have an account ? <a href='?r=people/login'>Login</a></span>
 </form>
 </div>

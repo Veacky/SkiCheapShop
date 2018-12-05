@@ -53,7 +53,8 @@ class ItemController extends Controller {
 		/// Function called when any form concerned Item is submited
 		/// Takes care of checking the form values, managing objects and sending information to the DB
 		if($_POST["action"]=="Add"){ // When an adding form is submited
-			if(strlen($_POST["description"]) < 2000){
+			if(strlen($_POST["description"]) < 2000 && isset($_POST["state"]) && isset($_POST["description"]) && isset($_POST["price"]) && isset($_POST["model"]) && isset($_POST["brand"]) && isset($_POST["category"])){
+var_dump($_POST);
 				$item = new Item();
 				$item->__set("category", new Category($_POST["category"]));
 				$item->__set("brand", $_POST["brand"]);
@@ -70,11 +71,12 @@ class ItemController extends Controller {
 				$this->render("index", Item::findAll());
 			}
 			else{
-				$_POST["error"] = "Description is too long, please try again.";
+				$_POST["error"] = "Please fill up all the fields.(Maybe the description is too long).";
 				$this->render("addItem");
 			}
 		}
 		else if($_POST["action"]=="Modify"){ //When a modify form is submited
+			$item = new Item();
 			$item->__set("category", new Category($_POST["category"]));
 			$item->__set("brand", $_POST["brand"]);
 			$item->__set("model", $_POST["model"]);

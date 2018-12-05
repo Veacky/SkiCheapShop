@@ -18,7 +18,7 @@ class PeopleController extends Controller {
 				(new ItemController())->render("index", $list);
 			}
 			else {
-				$_POST["error"] = "Unknow seller";
+				$_POST["error"] = "This user is either unknow or have no selling items.";
 				(new SiteController())->render("index", $_POST);
 			}
 	}
