@@ -52,7 +52,7 @@ class PeopleController extends Controller {
 		/// Function called when any form concerned People is submited
 		/// Takes care of checking the form values, managing objects and sending information to the DB
 		if($_POST["action"]=="Register"){ //When a Register form is submited
-			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"] && strlen($_POST["password_1"]) < 50){
+			if($_POST["email1"] == $_POST["email2"] && $_POST["password1"] == $_POST["password2"] && strlen($_POST["password1"]) < 50){
 				$userTest = People::findByEmail(trim(strtolower($_POST["email1"])));
 				if($userTest == "no result"){
 					$people = new People();
