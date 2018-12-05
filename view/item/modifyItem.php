@@ -1,6 +1,8 @@
 <?php
 if(isset($data)){
-if(isset($_SESSION["user"]) && $_SESSION["user"]->idpeople == $data->seller->idpeople){ ?>
+if(isset($_SESSION["user"]) && $_SESSION["user"]->idpeople == $data->seller->idpeople){
+		var_dump($data); ?>
+
 <h2 class="page-title">Modify an item</h2>
 
 <div class ="login-form col-12">
